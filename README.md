@@ -1,1 +1,2 @@
-# fa19-202-hex-clan
+# Team Hackathon Project
+

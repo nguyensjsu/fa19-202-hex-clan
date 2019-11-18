@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=IMenuInvoker
+comment1.params=
+comment1.target=void\ click()
+comment2.params=menuCommand
+comment2.target=void\ setMenuCommand(IMenuCommand)
+numComments=3

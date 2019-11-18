@@ -1,7 +1,21 @@
 #BlueJ class context
 comment0.target=MenuWorld
-comment0.text=\n\ Display\ the\ \ menu\ page\ with\ multiple\ options\ of\ New\ game\ ,\ Scores\ ,\ Credits\n\ \n\ @author\ Shalabh\ Neema\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Display\ the\ \ menu\ page\ with\ multiple\ options\ of\ New\ game\ ,\ Scores\ ,\ Credits\n\n\ @author\ Shalabh\ Neema\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=MenuWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MenuWorld.\n\ \n
-numComments=2
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MenuWorld.\n
+comment2.params=
+comment2.target=void\ scaleBackground()
+comment3.params=
+comment3.target=void\ instantiate()
+comment4.params=
+comment4.target=void\ setupMenuCommand()
+comment5.params=
+comment5.target=void\ performAction()
+comment6.params=
+comment6.target=void\ performAction()
+comment7.params=
+comment7.target=void\ performAction()
+comment8.params=
+comment8.target=void\ performAction()
+numComments=9

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Button
+comment0.text=\n\ Write\ a\ description\ of\ class\ Button\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=buttonType
+comment1.target=Button(Button.Type)
+comment2.params=buttonType
+comment2.target=void\ setPicture(Button.Type)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Button\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.params=
+comment4.target=void\ click()
+comment5.params=menuCommand
+comment5.target=void\ setMenuCommand(IMenuCommand)
+numComments=6

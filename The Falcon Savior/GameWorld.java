@@ -1,18 +1,18 @@
 import greenfoot.World;
 
 /**
- * Write a description of class MyWorld here.
+ * Write a description of class GameWorld here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MyWorld extends World {
+public class GameWorld extends World {
 
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for objects of class GameWorld.
      */
-    public MyWorld() {
+    public GameWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(1000, 800, 1);
     }
 }

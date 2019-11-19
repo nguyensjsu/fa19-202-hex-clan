@@ -1,6 +1,4 @@
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.World;
+import greenfoot.*;
 
 /**
  * Display the  menu page with multiple options of New game , Scores , Credits

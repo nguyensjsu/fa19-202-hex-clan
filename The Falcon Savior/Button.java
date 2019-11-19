@@ -1,6 +1,4 @@
-import greenfoot.Actor;
-import greenfoot.Color;
-import greenfoot.GreenfootImage;
+import greenfoot.*;
 
 /**
  * Write a description of class Button here.
@@ -45,7 +43,11 @@ public class Button extends Actor implements IMenuInvoker {
      */
     public void act() {
         // Add your action code here.
-        click();
+        if(Greenfoot.mouseClicked(this))
+        {
+            click();
+        }
+        
     }
 
     @Override

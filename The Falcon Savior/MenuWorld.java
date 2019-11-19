@@ -1,4 +1,6 @@
-import greenfoot.*;
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 /**
  * Display the  menu page with multiple options of New game , Scores , Credits
@@ -7,14 +9,11 @@ import greenfoot.*;
  * @version (a version number or a date)
  */
 public class MenuWorld extends World {
-    
+
     private Button singlePlayerButton;
     private Button twoPlayerButton;
     private Button helpButton;
     private Button creditsButton;
-    //private Button soundOnOffButton;
-    
-   GreenfootSound gameStartMusic = new GreenfootSound("GameStartMusic.mp3");
 
     /**
      * Constructor for objects of class MenuWorld.
@@ -29,11 +28,8 @@ public class MenuWorld extends World {
         twoPlayerButton = new Button(Button.Type.MULTI_PLAYER);
         helpButton = new Button(Button.Type.HELP);
         creditsButton = new Button(Button.Type.CREDITS);
-        //soundOnOffButton = new Button(Button.Type.TOGGLE_SOUND);
 
         instantiate();
-        
-        gameStartMusic.playLoop();
     }
 
     private void scaleBackground() {
@@ -49,7 +45,6 @@ public class MenuWorld extends World {
         addObject(twoPlayerButton, getWidth() / 4, 160);
         addObject(helpButton, getWidth() / 4, 200);
         addObject(creditsButton, getWidth() / 4, 240);
-       // addObject(soundOnOffButton, getWidth(), 100);
     }
 
     private void setupMenuCommand() {
@@ -57,11 +52,11 @@ public class MenuWorld extends World {
         IMenuCommand twoPlayerCommand = new MenuCommand();
         IMenuCommand helpCommand = new MenuCommand();
         IMenuCommand creditsCommand = new MenuCommand();
-        IMenuCommand soundOnOffCommand = new MenuCommand();
 
         singlePlayerCommand.setReceiver(new IMenuReceiver() {
             @Override
             public void performAction() {
+                SoundController.getInstance().stopMenuBackgroundMusic();
                 Greenfoot.setWorld(new GameWorld());
             }
         });
@@ -85,10 +80,19 @@ public class MenuWorld extends World {
             public void performAction() {
 
             }
-        });   
+        });
         singlePlayerButton.setMenuCommand(singlePlayerCommand);
         twoPlayerButton.setMenuCommand(twoPlayerCommand);
         helpButton.setMenuCommand(helpCommand);
         creditsButton.setMenuCommand(creditsCommand);
+    }
+    @Override
+    public void stopped() {
+        SoundController.getInstance().stopMenuBackgroundMusic();
+    }
+
+    @Override
+    public void started() {
+        SoundController.getInstance().playMenuBackgroundMusic();
     }
 }

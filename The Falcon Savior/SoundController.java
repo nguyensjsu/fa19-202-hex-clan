@@ -25,8 +25,6 @@ public class SoundController {
     }
 
     public void stopMenuBackgroundMusic() {
-        if (menuBackgroundMusic.isPlaying()) {
-            menuBackgroundMusic.stop();
-        }
+        menuBackgroundMusic.stop();
     }
 }

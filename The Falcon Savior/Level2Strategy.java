@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level2Strategy implements ILevelStrategy {
 
-    @Override
-    public Wave[] getWaves() {
-        return new Wave[0];
+    public List<IComponent> getTroops() {
+        return new ArrayList<>();
     }
 }

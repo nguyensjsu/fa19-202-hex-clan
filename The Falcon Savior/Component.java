@@ -1,36 +1,35 @@
-import greenfoot.*;
-import java.util.*;
+import greenfoot.World;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- *
- *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Component implements IComponent
-{
+public class Component implements IComponent {
 
     private ArrayList<IComponent> components = new ArrayList<>();
 
-
-    public Component()
-    {
+    Component() {
     }
 
-    public void addChild(IComponent c)
-    {
-        components.add(c);
+    public void addChild(IComponent component) {
+        components.add(component);
     }
 
-    public void removeChild(IComponent c)
-    {
-        components.remove(c);
+    public void addChildren(List<IComponent> components) {
+        this.components.addAll(components);
     }
 
-    public void display()
-    {
-        for(IComponent c: components)
-        {
-            c.display();
+    @Override
+    public void enableSound(boolean hasFire, boolean hasCollision) {
+        // Handle at root level
+    }
+
+    public void display(World world) {
+        for (IComponent component : components) {
+            component.display(world);
         }
 
     }

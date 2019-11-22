@@ -1,4 +1,5 @@
-import greenfoot.*;
+import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 /**
  * Write a description of class GameWorld here.
@@ -6,29 +7,33 @@ import greenfoot.*;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class GameWorld extends World {
+class GameWorld extends World {
 
     /**
      * Constructor for objects of class GameWorld.
      */
-    public GameWorld() {
+    GameWorld() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1);
         scaleBackground();
-        IComponent gameScreen=new Component();
-        IComponent enemyGroup=new Component();
-        
-        enemyGroup.addChild(new EnemyShip(this,100,80));
-        enemyGroup.addChild(new EnemyShip(this,150,90));
-        enemyGroup.addChild(new EnemyShip(this,200,90));
-        enemyGroup.addChild(new EnemyShip(this,250,90));
-        enemyGroup.addChild(new EnemyShip(this,350,90));
-        
+
+        IComponent gameScreen = new Component();
+        IComponent enemyGroup = new Component();
+
+        Level level = new Level(50, 50);
+        enemyGroup.addChildren(level.getEnemyTroops());
+
+        gameScreen.addChild(level);
         gameScreen.addChild(enemyGroup);
-        gameScreen.addChild(new MilleniumFalcon(this, 500, 700));
-        gameScreen.display();
+
+        PlayerShip firstplayer = new PlayerShip1(500, 700);
+        PlayerShip secondplayer = new PlayerShip2(400, 700);
+
+        gameScreen.addChild(firstplayer);
+        gameScreen.addChild(secondplayer);
+        gameScreen.display(this);
     }
-    
+
     private void scaleBackground() {
         GreenfootImage backgroundImage = getBackground();
         backgroundImage.scale(1000, 800);

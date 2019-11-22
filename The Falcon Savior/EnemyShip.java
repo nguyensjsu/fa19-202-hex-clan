@@ -1,5 +1,4 @@
-import greenfoot.GreenfootImage;
-import greenfoot.World;
+import greenfoot.Greenfoot;
 
 /**
  * Write a description of class EnemyShip here.
@@ -8,47 +7,40 @@ import greenfoot.World;
  * @version (a version number or a date)
  */
 public class EnemyShip extends Leaf {
-    /**
-     * Act - do whatever the EnemyShip wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int count = 200 + Greenfoot.getRandomNumber(500);
+    private int direction = 1;
 
-    int direction = 1;
-    int speed = 4;
-    GreenfootImage image = new GreenfootImage("enemy_ship.png");
-
-    public EnemyShip(World world, int x, int y) {
-
-        super(world, x, y);
-        //this.world=world;
-        //setLocation(x,y);
+    EnemyShip(int x, int y) {
+        super(x, y, LeafFactory.getLeafType("EnemyShip", "enemy_ship.png", null));
     }
 
     public void act() {
         // Add your action code here.
         move();
+        shoot();
+        if (count > 0) {
+            count--;
+        }
     }
 
-    public void move() {
+    private void move() {
         if (isAtEdge()) {
             toggleDirection();
         }
 
-        this.setLocation(getX() + (speed * direction), getY());
-
-        if (isTouching(Rocket.class)) {
-            removeTouching(Rocket.class);
-        }
+        this.setLocation(getX() + (2 * direction), getY());
     }
 
-    public void toggleDirection() {
+    private void toggleDirection() {
         direction = direction * -1;
     }
 
-    public void display() {
-        setImage(image);
-        world.addObject(this, x, y);
+    private void shoot() {
+        int number = Greenfoot.getRandomNumber(100);
+        if (number >= 99 && count == 0) {
+            count = 300 + Greenfoot.getRandomNumber(600);
+            EnemyRocket rocket = new EnemyRocket(getX(), getY() + 10);
+            rocket.display(getWorld());
+        }
     }
-
-
 }

@@ -148,8 +148,6 @@ Movement of playerships
 
 ![Template pattern](./Docs/TemplatePattern.png)
 
-[User Story](/User%20Stories/UserStories.md)
-
 ### Use Case Diagram:
 ![Use Case Diagram 1](./Docs/UseCase%20Diagram1.png)
 ![Use Case Diagram 2](./Docs/UseCase%20Diagram2.png)
@@ -158,3 +156,6 @@ Movement of playerships
 ![Game World](./Docs/GameWorld.png)
 ![Life State](./Docs/LifeState.png)
 
+
+* [User Story](/User%20Stories/UserStories.md)
+* [User Story Ad Video](https://www.youtube.com/watch?v=8kbJdJ4mUCU&t=7s)

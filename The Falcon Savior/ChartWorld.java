@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-//import java.awt.Color;
 
 
 /**
@@ -28,8 +27,8 @@ public class ChartWorld extends World {
         super(1000, 680, 1);
         getBackground().setColor(Color.WHITE);
         getBackground().fill();
-        
-           GreenfootImage backgroundScreen = new GreenfootImage("HelpBack.png");
+
+        GreenfootImage backgroundScreen = new GreenfootImage("HelpBack.png");
         backgroundScreen.scale(1000, 800);
         setBackground(backgroundScreen);
 

@@ -55,7 +55,7 @@ public class GameOver extends World {
         GreenfootImage backgroundScreen = new GreenfootImage("HelpBack.png");
         backgroundScreen.scale(1000, 800);
         setBackground(backgroundScreen);
-        getBackground().drawImage(new GreenfootImage("GAME OVER", 50, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)), 400, 100);
+        getBackground().drawImage(new GreenfootImage("GAME OVER", 50, Color.LIGHT_GRAY, new Color(0, 0, 0, 0)), 350, 100);
         Button continueButton = new Button(Button.Type.CONTINUE);
         addObject(continueButton, 600, 600);
         IMenuCommand continueCommand = new MenuCommand();

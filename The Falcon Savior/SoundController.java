@@ -11,7 +11,7 @@ class SoundController {
      */
     private SoundController() {
         try {
-            menuBackgroundMusic = new GreenfootSound("GameStartMusic.mp3");
+            menuBackgroundMusic = new GreenfootSound("GameStartMusic.wav");
         } catch (Exception ex) {
             // Ignore
         }

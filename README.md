@@ -148,7 +148,7 @@ Movement of playerships
 
 ![Template pattern](./Docs/TemplatePattern.png)
 
-![User Story](/User%20Stories/UserStories.md)
+[User Story](/User%20Stories/UserStories.md)
 
 ### Use Case Diagram:
 ![Use Case Diagram 1](./Docs/UseCase%20Diagram1.png)

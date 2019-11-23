@@ -9,6 +9,12 @@ import java.util.List;
  */
 public class Level3Strategy implements ILevelStrategy {
 
+    private int targetScore = 0;
+
+    public int getTargetScore() {
+        return targetScore;
+    }
+
     public List<IComponent> getTroops() {
         return new ArrayList<>();
     }

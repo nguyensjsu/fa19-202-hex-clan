@@ -11,7 +11,7 @@ public class Life extends Leaf {
      */
 
     public Life(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("Life", "life.png", null));
+        super(x, y, LeafFactory.getLeafType("Life", "life.png", null, null));
     }
 
     public void act() {

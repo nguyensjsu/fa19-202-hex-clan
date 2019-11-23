@@ -13,7 +13,7 @@ public class PlayerShip1 extends PlayerShip {
     private int reloadDelayCount = 25;
 
     PlayerShip1(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("PlayerShip1", "millennium_falcon.png", null));
+        super(x, y, LeafFactory.getLeafType("PlayerShip1", "millennium_falcon.png", null, null));
         speed = 5;
     }
 

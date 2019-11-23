@@ -1,6 +1,6 @@
 import greenfoot.GreenfootSound;
 
-public class SoundController {
+class SoundController {
 
     private static SoundController sInstance;
 
@@ -10,7 +10,11 @@ public class SoundController {
      * Don't let anyone instantiate this class.
      */
     private SoundController() {
-        menuBackgroundMusic = new GreenfootSound("main_menu_music.mp3");
+        try {
+            menuBackgroundMusic = new GreenfootSound("GameStartMusic.mp3");
+        } catch (Exception ex) {
+            // Ignore
+        }
     }
 
     public synchronized static SoundController getInstance() {
@@ -21,7 +25,11 @@ public class SoundController {
     }
 
     public void playMenuBackgroundMusic() {
-        menuBackgroundMusic.playLoop();
+        try {
+            menuBackgroundMusic.playLoop();
+        } catch (Exception ex) {
+            // Ignore
+        }
     }
 
     public void stopMenuBackgroundMusic() {

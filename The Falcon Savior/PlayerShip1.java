@@ -10,22 +10,28 @@ public class PlayerShip1 extends PlayerShip {
 
     private boolean isShooting = false;
 
+    private int reloadDelayCount = 25;
+
     PlayerShip1(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("Player1", "millennium_falcon.png", null), new ScoreBoard(30, 15));
+        super(x, y, LeafFactory.getLeafType("PlayerShip1", "millennium_falcon.png", null));
+        speed = 5;
     }
 
     public void control() {
-        if (Greenfoot.isKeyDown("left")) {
+        reloadDelayCount++;
+        if (Greenfoot.isKeyDown("LEFT")) {
+            //moves right
+            moveRight();
+        }
+        if (Greenfoot.isKeyDown("RIGHT")) {
+            //moves left
             moveLeft();
         }
 
-        if (Greenfoot.isKeyDown("right")) {
-            moveRight();
-        }
-
-        if (Greenfoot.isKeyDown("space") && !isShooting) {
+        if (Greenfoot.isKeyDown("space") && !isShooting && reloadDelayCount >= 25) {
             shoot();
             isShooting = true;
+            reloadDelayCount = 0;
         }
 
         if (!Greenfoot.isKeyDown("space") && isShooting) {

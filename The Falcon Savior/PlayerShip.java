@@ -1,51 +1,78 @@
-import greenfoot.World;
-
 /**
  * Write a description of class Player here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class PlayerShip extends Leaf {
+public abstract class PlayerShip extends Leaf implements IPlayerEventSubject, IProjectileOwner {
 
-    private ScoreBoard scoreBoard;
+    int speed;
+    int lifeCount = 3;
+    private IPlayerEventHandler chain;
 
-    PlayerShip(int x, int y, LeafType leafType, ScoreBoard scoreBoard) {
+    PlayerShip(int x, int y, LeafType leafType) {
         super(x, y, leafType);
-        this.scoreBoard = scoreBoard;
     }
 
     void moveLeft() {
-        if (getX() - 10 > 0) {
-            this.setLocation(getX() - 2, getY());
-        }
+        if (getX() + speed >= 870)
+            setLocation(870, getY());
+        else
+            move(speed);
     }
 
     void moveRight() {
-        if (getX() + 10 < this.getWorld().getWidth()) {
-            this.setLocation(getX() + 2, getY());
-        }
+        if (getX() - speed <= 160)
+            setLocation(160, getY());
+        else
+            move(-speed);
     }
 
     public void act() {
         control();
     }
 
-    public void display(World world) {
-        super.display(world);
-        scoreBoard.display(world);
-    }
-
-    public int getScore() {
-        return scoreBoard.score;
-    }
-
     void shoot() {
-        Rocket rocket = new Rocket(getX(), getY() - 10);
-        rocket.addObserver(scoreBoard);
-        IComponent wrappedRocket = new DualSoundDecorator(rocket);
+        IProjectile rocket = new PlayerRocket(getX(), getY() - 10);
+        rocket.addProjectileOwner(this);
+        IComponent wrappedRocket = new DualSoundDecorator((IComponent) rocket);
         wrappedRocket.display(getWorld());
     }
 
     abstract public void control();
+
+    @Override
+    public void addHandler(IPlayerEventHandler handler) {
+        if (null == chain) {
+            chain = handler;
+        } else {
+            IPlayerEventHandler prev = chain;
+            while (prev.hasNext()) {
+                prev = handler.getNext();
+            }
+            prev.setNext(handler);
+        }
+    }
+
+    @Override
+    public void removeHandler(IPlayerEventHandler handler) {
+
+    }
+
+    @Override
+    public void notifyHandlers(Event event) {
+        if (event == Event.LIFE) {
+            if (lifeCount > 1) {
+                lifeCount--;
+            } else {
+                getWorld().removeObject(this);
+            }
+        }
+        chain.handleEvent(event);
+    }
+
+    @Override
+    public void notifyOwner(Event event) {
+        notifyHandlers(event);
+    }
 }

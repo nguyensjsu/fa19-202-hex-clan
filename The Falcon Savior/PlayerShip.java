@@ -35,7 +35,7 @@ public abstract class PlayerShip extends Leaf implements IPlayerEventSubject, IP
     void shoot() {
         IProjectile rocket = new PlayerRocket(getX(), getY() - 10);
         rocket.addProjectileOwner(this);
-        IComponent wrappedRocket = new DualSoundDecorator((IComponent) rocket);
+        IComponent wrappedRocket = new FireSoundDecorator((IComponent) rocket);
         wrappedRocket.display(getWorld());
     }
 

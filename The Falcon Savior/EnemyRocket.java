@@ -13,7 +13,7 @@ public class EnemyRocket extends Projectile {
      */
 
     EnemyRocket(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("EnemyRocket", "enemy_rocket.png", null));
+        super(x, y, LeafFactory.getLeafType("EnemyRocket", "enemy_rocket.png", null, "Explosion.mp3"));
     }
 
     public void act() {
@@ -22,6 +22,7 @@ public class EnemyRocket extends Projectile {
 
         if (this.isTouching(PlayerShip.class) || this.isTouching(PlayerRocket.class)) {
             if (this.isTouching(PlayerShip.class)) {
+                onLeafPreRemove();
                 PlayerShip playerShip = (PlayerShip) (getOneIntersectingObject(PlayerShip.class));
                 playerShip.notifyHandlers(Event.LIFE);
                 notifyProjectileOwner(Event.LIFE);

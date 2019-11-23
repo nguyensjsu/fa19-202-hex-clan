@@ -15,6 +15,12 @@ abstract class EnemyShip extends Leaf implements IProjectileOwner {
         isDirectionChanged = false;
     }
 
+
+    @Override
+    public void act() {
+        control();
+    }
+
     /**
      * Checks if we should go down
      */
@@ -43,6 +49,8 @@ abstract class EnemyShip extends Leaf implements IProjectileOwner {
 
         script = Script.NORMAL;
     }
+
+    abstract public void control();
 
     @Override
     public void notifyOwner(Event event) {

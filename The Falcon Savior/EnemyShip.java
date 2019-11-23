@@ -1,46 +1,56 @@
-import greenfoot.Greenfoot;
+abstract class EnemyShip extends Leaf implements IProjectileOwner {
 
-/**
- * Write a description of class EnemyShip here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class EnemyShip extends Leaf {
-    private int count = 200 + Greenfoot.getRandomNumber(500);
-    private int direction = 1;
+    Script script = Script.NORMAL;
+    private int direction;
+    private boolean end = false;
+    private boolean isDirectionChanged = false;
 
-    EnemyShip(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("EnemyShip", "enemy_ship.png", null));
+    EnemyShip(int direction, int x, int y, LeafType type) {
+        super(x, y, type);
+        this.direction = direction;
     }
 
-    public void act() {
-        // Add your action code here.
-        move();
-        shoot();
-        if (count > 0) {
-            count--;
-        }
+    void move() {
+        setLocation(getX() + direction, getY());
+        isDirectionChanged = false;
     }
 
-    private void move() {
-        if (isAtEdge()) {
-            toggleDirection();
-        }
+    /**
+     * Checks if we should go down
+     */
+    void checkMove() {
+        if (script == Script.NORMAL) {
+            if (!isDirectionChanged) {
+                if (getX() >= 870 || getX() <= 160) {
+                    script = Script.DOWN;
+                    toggleDirection();
+                }
+            }
 
-        this.setLocation(getX() + (2 * direction), getY());
+            if (getY() >= 750) {
+                end = true;
+            }
+        }
     }
 
     private void toggleDirection() {
         direction = direction * -1;
+        isDirectionChanged = true;
     }
 
-    private void shoot() {
-        int number = Greenfoot.getRandomNumber(100);
-        if (number >= 99 && count == 0) {
-            count = 300 + Greenfoot.getRandomNumber(600);
-            EnemyRocket rocket = new EnemyRocket(getX(), getY() + 10);
-            rocket.display(getWorld());
-        }
+    void moveDown() {
+        setLocation(getX(), getY() + 90);
+
+        script = Script.NORMAL;
+    }
+
+    @Override
+    public void notifyOwner(Event event) {
+
+    }
+
+    public enum Script {
+        DOWN,
+        NORMAL
     }
 }

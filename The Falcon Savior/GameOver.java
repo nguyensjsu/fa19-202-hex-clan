@@ -22,7 +22,7 @@ public class GameOver extends World {
         super(1000, 800, 1);
 
         scaleBackground();
-        GreenfootImage img = new GreenfootImage("PLAYER 1:    " + score1, 25, Color.LIGHT_GRAY, new Color(0, 0, 0, 0));
+        GreenfootImage img = new GreenfootImage("PLAYER 1:    " + score1, 40, Color.RED, new Color(0, 0, 0, 0));
         getBackground().drawImage(img, 200, 200);
         pushScores(score1);
     }
@@ -31,8 +31,8 @@ public class GameOver extends World {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1);
         scaleBackground();
-        GreenfootImage img1 = new GreenfootImage("PLAYER 1:  " + score1, 25, Color.RED, new Color(0, 0, 0, 0));
-        GreenfootImage img2 = new GreenfootImage("PLAYER 2:  " + score2, 25, Color.GREEN, new Color(0, 0, 0, 0));
+        GreenfootImage img1 = new GreenfootImage("PLAYER 1:  " + score1, 40, Color.RED, new Color(0, 0, 0, 0));
+        GreenfootImage img2 = new GreenfootImage("PLAYER 2:  " + score2, 40, Color.GREEN, new Color(0, 0, 0, 0));
         getBackground().drawImage(img1, 200, 200);
         getBackground().drawImage(img2, 200, 400);
         pushScores(score1);

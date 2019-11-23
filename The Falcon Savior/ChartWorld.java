@@ -28,7 +28,10 @@ public class ChartWorld extends World {
         super(1000, 680, 1);
         getBackground().setColor(Color.WHITE);
         getBackground().fill();
-
+        
+           GreenfootImage backgroundScreen = new GreenfootImage("HelpBack.png");
+        backgroundScreen.scale(1000, 800);
+        setBackground(backgroundScreen);
 
         List<Point> listpoints = new ArrayList<Point>();
         List<Integer> listscores = new ArrayList<Integer>();
@@ -62,20 +65,20 @@ public class ChartWorld extends World {
         topfivescore = topfivescore.subList(Math.max(topfivescore.size() - 5, 0), topfivescore.size());
 
         int[] topfive = topfivescore.stream().mapToInt(i -> i).toArray();
-        getBackground().drawImage(new GreenfootImage("STATISTICS", 60, Color.BLACK, new Color(0, 0, 0, 0)), 400, 15);
+        getBackground().drawImage(new GreenfootImage("STATISTICS", 60, Color.ORANGE, new Color(0, 0, 0, 0)), 350, 15);
         getBackground().drawImage(createLineChart(1000, points, 700, 250, Color.WHITE, Color.RED, Color.BLACK, 5), 120, 80);
-        getBackground().drawImage(new GreenfootImage("Top 5 Scores", 30, Color.BLUE, new Color(0, 0, 0, 0)), 130, 420);
+        getBackground().drawImage(new GreenfootImage("Top 5 Scores", 30, Color.CYAN, new Color(0, 0, 0, 0)), 130, 420);
 
         for (int i = 0, j = 4; i < topfive.length && j >= 0; i++, j--)
-            getBackground().drawImage(new GreenfootImage(Integer.toString(topfive[j]), 30, Color.BLACK, new Color(0, 0, 0, 0)), 180, 470 + i * 40);
+            getBackground().drawImage(new GreenfootImage(Integer.toString(topfive[j]), 30, Color.GREEN, new Color(0, 0, 0, 0)), 180, 470 + i * 40);
 
-        getBackground().drawImage(new GreenfootImage("AVERAGE SCORE :", 30, Color.BLACK, new Color(0, 0, 0, 0)), 500, 470);
-        getBackground().drawImage(new GreenfootImage(Integer.toString(averagevalue), 30, Color.BLACK, new Color(0, 0, 0, 0)), 800, 470);
-        getBackground().drawImage(new GreenfootImage("NUMBER OF GAMES :", 30, Color.BLACK, new Color(0, 0, 0, 0)), 500, 510);
-        getBackground().drawImage(new GreenfootImage(Integer.toString(scores.length), 30, Color.BLACK, new Color(0, 0, 0, 0)), 800, 510);
+        getBackground().drawImage(new GreenfootImage("AVERAGE SCORE :", 30, Color.CYAN, new Color(0, 0, 0, 0)), 500, 470);
+        getBackground().drawImage(new GreenfootImage(Integer.toString(averagevalue), 30, Color.GREEN, new Color(0, 0, 0, 0)), 800, 470);
+        getBackground().drawImage(new GreenfootImage("NUMBER OF GAMES :", 30, Color.CYAN, new Color(0, 0, 0, 0)), 500, 510);
+        getBackground().drawImage(new GreenfootImage(Integer.toString(scores.length), 30, Color.GREEN, new Color(0, 0, 0, 0)), 800, 510);
 
         exitHelpScreen = new Button(Button.Type.CONTINUE);
-        addObject(exitHelpScreen, 600, 600);
+        addObject(exitHelpScreen, 700, 600);
         IMenuCommand exitCommand = new MenuCommand();
         exitCommand.setReceiver(new IMenuReceiver() {
             @Override
@@ -103,7 +106,7 @@ public class ChartWorld extends World {
         for (int i = 0; i < 5; i++) {
             lineChart.setColor(Color.BLACK);
             lineChart.drawLine(25, height - height / 4 * i + 10, width + 27, height - height / 4 * i + 10);
-            lineChart.drawImage(new GreenfootImage(Integer.toString((int) Math.round(maxValue / 4 * i)), 18, Color.BLACK, new Color(0, 0, 0, 0)), 0, height - height / 4 * i + 3);
+            lineChart.drawImage(new GreenfootImage(Integer.toString((int) Math.round(maxValue / 4 * i)), 12, Color.BLACK, new Color(0, 0, 0, 0)), 0, height - height / 4 * i + 3);
             lineChart.drawLine(27 + width / 4 * i, 10, 27 + width / 4 * i, height + 10);
             lineChart.drawImage(new GreenfootImage((Integer.toString((int) Math.round(maxValueXnames / 4 * i))), 18, Color.BLACK, new Color(0, 0, 0, 0)), width / 4 * i + 15, height + 15);
         }

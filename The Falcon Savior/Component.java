@@ -31,6 +31,9 @@ public class Component implements IComponent {
         for (IComponent component : components) {
             component.display(world);
         }
+    }
 
+    ArrayList<IComponent> getComponents() {
+        return components;
     }
 }

@@ -1,4 +1,8 @@
+import java.util.List;
+
 public interface ILevelStrategy {
 
-    Wave[] getWaves();
+    int getTargetScore();
+
+    List<IComponent> getTroops();
 }

@@ -1,9 +1,15 @@
+import greenfoot.World;
 
-public interface IComponent
-{
-    public void addChild(IComponent c);
+import java.util.List;
 
-    public void removeChild(IComponent c);
+public interface IComponent {
 
-    public void display();
+
+    void addChild(IComponent component);
+
+    void addChildren(List<IComponent> components);
+
+    void enableSound(boolean hasFire, boolean hasCollision);
+
+    void display(World world);
 }

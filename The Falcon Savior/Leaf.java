@@ -45,10 +45,19 @@ public class Leaf extends Actor implements IComponent {
         this.hasCollisionSound = hasCollision;
     }
 
+    void onLeafPreRemove() {
+        if (this.hasCollisionSound) {
+            leafType.playCollisonSound();
+        }
+    }
+
     public void display(World world) {
         if (null != leafType) {
             leafType.setImage(this);
         }
         world.addObject(this, x, y);
+        if (this.hasFireSound) {
+            leafType.playFireSound();
+        }
     }
 }

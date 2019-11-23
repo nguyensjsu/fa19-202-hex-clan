@@ -10,23 +10,31 @@ import greenfoot.GreenfootSound;
  */
 public class LeafType {
     private GreenfootImage image;
-    private GreenfootSound sound;
+    private GreenfootSound fireSound;
+    private GreenfootSound collisionSound;
 
     /**
      * Constructor for objects of class LeafType
      */
-    LeafType(GreenfootImage image, GreenfootSound sound) {
+    LeafType(GreenfootImage image, GreenfootSound fireSound, GreenfootSound collisionSound) {
         this.image = image;
-        this.sound = sound;
+        this.fireSound = fireSound;
+        this.collisionSound = collisionSound;
     }
 
     void setImage(Actor actor) {
         actor.setImage(this.image);
     }
 
-    public void playSound() {
-        if (null != sound) {
-            sound.play();
+    public void playFireSound() {
+        if (null != fireSound) {
+            fireSound.play();
+        }
+    }
+
+    public void playCollisonSound() {
+        if (null != collisionSound) {
+            collisionSound.play();
         }
     }
 }

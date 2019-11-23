@@ -1,4 +1,3 @@
-
 public interface IMenuCommand {
 
     void executeCommand();

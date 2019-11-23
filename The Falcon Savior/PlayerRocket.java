@@ -13,7 +13,7 @@ public class PlayerRocket extends Projectile {
      */
 
     PlayerRocket(int x, int y) {
-        super(x, y, LeafFactory.getLeafType("PlayerRocket", "player_rocket.png", null));
+        super(x, y, LeafFactory.getLeafType("PlayerRocket", "player_rocket.png", "Missile_Firing.wav", "Explosion.mp3"));
     }
 
     public void act() {
@@ -21,6 +21,7 @@ public class PlayerRocket extends Projectile {
         this.setLocation(getX(), getY() - 4);
 
         if (this.isTouching(EnemyShip.class)) {
+            onLeafPreRemove();
             notifyProjectileOwner(Event.SCORE);
             removeTouching(EnemyShip.class);
             inWorld = false;

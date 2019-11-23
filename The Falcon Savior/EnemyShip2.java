@@ -13,10 +13,10 @@ public class EnemyShip2 extends EnemyShip {
     private int multiRocketWaitLock = 500 + Greenfoot.getRandomNumber(500);
 
     EnemyShip2(int direction, int x, int y) {
-        super(direction, x, y, LeafFactory.getLeafType("EnemyShip2", "enemy_ship_2.png", null));
+        super(direction, x, y, LeafFactory.getLeafType("EnemyShip2", "enemy_ship_2.png", null, null));
     }
 
-    public void act() {
+    public void control() {
         // Add your action code here.
         checkMove();
         if (script == Script.NORMAL) {
@@ -38,7 +38,7 @@ public class EnemyShip2 extends EnemyShip {
             rocketWaitLock = 300 + Greenfoot.getRandomNumber(600);
             IProjectile rocket = new EnemyRocket(getX(), getY() + 10);
             rocket.addProjectileOwner(this);
-            IComponent wrappedRocket = new DualSoundDecorator((IComponent) rocket);
+            IComponent wrappedRocket = new CollisionSoundDecorator((IComponent) rocket);
             wrappedRocket.display(getWorld());
         }
     }
